@@ -10,6 +10,7 @@ $(document).ready(function() {
  */
 function initializePage() {
 	$('.project a').click(addProjectDetails);
+	
 
 	// $('#colorBtn').click(randomizeColors);
 }
@@ -27,4 +28,29 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+	var ajaxLink = "http://localhost:3000/project/" + idNumber;
+	var projectNum = "#project" + idNumber;
+	$.get(ajaxLink, function(data) {
+		console.log("AJAX run!");
+		console.log(data);
+		console.log(projectNum);
+		//$(this).closest(".details").html(data);
+		var title = "<h3>" + data['title'] + "</h3>";
+		console.log(title);
+		var date = "<h4>" + data['date'] + "</h4>";
+		//var img = '<img src="' data['image'] + '" class=detailsImage>';
+		console.log(title + date);
+		//$(projectNum).find(".details").append(title);
+		//$(projectNum).find(".details").append(date);
+		//$(projectNum).find(".details").append(img);
+		$(projectNum).find(".details").append(title + date + data.summary);
+});
+	
+	//$(projectNum).find(".details").append("foo");
+}
+
+function ajaxMake(e) {
+	e.preventDefault();
+	
+	
 }
