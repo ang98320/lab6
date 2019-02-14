@@ -38,12 +38,13 @@ function addProjectDetails(e) {
 		var title = "<h3>" + data['title'] + "</h3>";
 		console.log(title);
 		var date = "<h4>" + data['date'] + "</h4>";
+		var myImg = '<img src="' + data['image'] + '" class="detailsImage">';
 		//var img = '<img src="' data['image'] + '" class=detailsImage>';
 		console.log(title + date);
 		//$(projectNum).find(".details").append(title);
 		//$(projectNum).find(".details").append(date);
 		//$(projectNum).find(".details").append(img);
-		$(projectNum).find(".details").append(title + date + data.summary);
+		$(projectNum).find(".details").append(title + date + myImg + data.summary);
 });
 	
 	//$(projectNum).find(".details").append("foo");
